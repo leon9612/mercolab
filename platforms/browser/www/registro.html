@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/registro.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Registro de usuarios
+        </div>
+        <form>
+            <div class="field">
+                <input type="text" id="nombres" required>
+                <label>Nombres</label>
+            </div>
+            <div class="field">
+                <input type="text" id="apellidos" required>
+                <label>Apellidos</label>
+            </div>
+            <div class="field">
+                <select type="number" id="tipoDocumento">
+
+                </select>
+            </div>
+            <div class="field">
+                <input type="number" id="numeroDocumento" required>
+                <label>Numero documento</label>
+            </div>
+            <div class="field">
+                <input type="email" id="email" required>
+                <label>Email</label>
+            </div>
+            <div class="field">
+                <input type="password" id="password" required>
+                <label>Contraseña</label>
+            </div>
+            <div class="field">
+                <input type="submit" id="btn-registro" value="Registrarse">
+            </div>
+            <div class="signup-link">
+                <a href="index.html">Login</a>
+            </div>
+            <!-- <div style="text-align: center;">
+                <label> <strong>Copyright © Todos los Derechos Reservados</strong></label><br>
+                <label><strong>MARCOLAB S.A.S</strong></label><br>
+                <label style="font-size: 12px;color: #E31F24">Version 1.0.0</label>
+            </div> -->
+        </form>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/Jquery/jquery-3.2.1.min.js"></script>
+
+<script src="js/registro.js"></script>
+
+</html>

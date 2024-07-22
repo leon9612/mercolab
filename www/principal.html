@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+</head>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="text-align: center;padding: 5px;background:  #B6F0E9;">
+            <div class="center" style="color:  black;">Taximetro</div>
+        </ons-toolbar>
+
+        <ons-tabbar swipeable position="auto">
+            <ons-tab page="tab1.html" label="Pruebas creadas" onclick="getPruebas()" icon="fa-car" active>
+            </ons-tab>
+            <ons-tab page="tab2.html" label="Datos generales" icon="fa-file">
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+
+    <template id="tab1.html">
+        <ons-page id="Tab1">
+
+            <ons-card>
+                <div class="title">
+                    Calibraciones por realizar
+                </div>
+                <br>
+                <div id="placasVisor">
+
+                </div>
+            </ons-card>
+
+        </ons-page>
+    </template>
+
+    <template id="tab2.html">
+        <ons-page id="Tab2">
+
+            <ons-card>
+                <div class="title">
+                    Informacion general
+                </div>
+                <div class="content">
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 95%; background-color: aqua; color: black;"
+                                onclick="createAlertDialog()">Buscar</ons-button>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 95%; background-color: #FADBD8; color: black;"
+                                onclick="nuevo()">Nuevo</ons-button>
+                        </ons-col>
+
+                    </ons-row>
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Placa</ons-list-header>
+                            <ons-input id="placa" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Placa" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Nombre cliente</ons-list-header>
+                            <ons-input id="cliente" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Nombre Cliente" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Direccion</ons-list-header>
+                            <ons-input id="direccion" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Direccion cliente" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Ciudad</ons-list-header>
+                            <ons-input id="ciudad" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Ciudad" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Marca del vehiculo</ons-list-header>
+                            <ons-input id="marca" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="marca" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Numeracion interna del vehiculo</ons-list-header>
+                            <ons-input id="numeracion_interna_del_vehiculo" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Numeracion interna del vehiculo" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Serial taximetro</ons-list-header>
+                            <ons-input id="serial_taximetro" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Serial taximetro" required></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Empresa afiliacion</ons-list-header>
+                            <ons-input id="empresa_afiliado" modifier="underbar"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Empresa afiliado" required></ons-input>
+                            <ons-input id="idvehiculo" type="hidden"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 94%; background-color: aquamarine; color: black;"
+                                onclick="saveVehiculo(0)">Guardar</ons-button>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 94%; background-color: blanchedalmond; color: black;"
+                                onclick="saveVehiculo(1)">Guardar y
+                                Asignar</ons-button>
+                        </ons-col>
+                    </ons-row>
+
+
+
+                </div>
+            </ons-card>
+
+
+
+        </ons-page>
+    </template>
+
+    <!-- <ons-modal direction="up">
+        <div style="text-align: center">
+            <p>
+                <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Loading...
+            </p>
+        </div>
+    </ons-modal> -->
+
+    <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
+        <div class="alert-dialog-title">Buscar vehiculo</div>
+        <div class="alert-dialog-content">
+            <ons-list-header>Placa</ons-list-header>
+            <ons-input id="placaIngresada" modifier="underbar"
+                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                placeholder="Ingrese la placa"></ons-input>
+        </div>
+        <div class="alert-dialog-footer">
+            <ons-alert-dialog-button onclick="hideAlertDialog()">Cancel</ons-alert-dialog-button>
+            <ons-alert-dialog-button onclick="getPlaca()">OK</ons-alert-dialog-button>
+        </div>
+    </ons-alert-dialog>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="js/Jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/datosGenerales.js"></script>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+</html>

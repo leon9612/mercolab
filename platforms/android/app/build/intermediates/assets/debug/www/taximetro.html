@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+</head>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="text-align: center;padding: 5px;background:  #B6F0E9;">
+            <div class="center" style="color:  black;">Taximetro</div>
+        </ons-toolbar>
+
+        <ons-tabbar swipeable position="auto">
+            <ons-tab page="tab1.html" label="Prueba" icon="fa-car" active>
+            </ons-tab>
+            <ons-tab page="tab2.html" label="Configuracion" icon="md-settings">
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+
+    <template id="tab1.html">
+        <ons-page id="Tab1">
+
+            <ons-card>
+                <div class="title">
+                    Distancia
+                </div>
+                <div class="content">
+                    <br>
+                    <ons-row>
+                        <ons-col width="50%" style="text-align: center">
+                            <strong>PULSOS</strong>
+                        </ons-col>
+                        <ons-col width="50%" style="text-align: center">
+                            <strong>REVOLUCIONES</strong>
+                        </ons-col>
+                    </ons-row>
+                     <ons-row>
+                        
+                        <ons-col width="45%" style="text-align: left">
+                            <label style="
+                                       font-size: 40px;
+                                       border: solid 3px black;
+                                       color: whitesmoke;text-align: center;
+                                       background: black;
+                                       font-family: sans-serif;" id="pulsos">---</label>
+                        </ons-col>
+                        
+                        <ons-col width="45%" style="text-align: left">
+                            <label style="
+                                       font-size: 40px;
+                                       border: solid 3px black;
+                                       color: whitesmoke;text-align: center;
+                                       background: black;
+                                       font-family: sans-serif;" id="revoluciones">---</label>
+                        </ons-col>
+                    </ons-row> 
+                </div>
+            </ons-card>
+            <!-- <ons-card>
+                <div class="title">
+                    Tiempo
+                </div>
+                <div class="content">
+                    <br>
+
+                </div>
+            </ons-card> -->
+        </ons-page>
+    </template>
+
+    <template id="tab2.html">
+        <ons-page id="Tab2">
+
+            <ons-card>
+                <div class="title">
+                    Configuracion de prueba
+                </div>
+                <div class="content">
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-list-header>Ingrese la ip del tablero</ons-list-header>
+                            <ons-input id="ip" modifier="underbar" onkeydown="guradarIp()"
+                                style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
+                                placeholder="Ip equipo"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Seleccione la ciudad</label>
+                            <ons-list-item>
+                                <div class="center">
+                                    <select id="selectConfigTaximetro" onchange="selectCiudad()"
+                                        style="width: 100%; height: 40px;">
+                                    </select>
+                                </div>
+                            </ons-list-item>
+                        </ons-col>
+
+                    </ons-row>
+
+
+                </div>
+            </ons-card>
+
+            <ons-card>
+                <div class="title">
+                    Datos taximetro
+                </div>
+                <div class="content">
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Banderazo en pesos</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="banderazoPesos" modifier="underbar" style="text-align: center;"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Banderazo en unidad</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="banderazoUnidad" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Distancia en caida</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="distanciaCaida" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Divisor distancia</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="divistorDistancia" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Divisor velocidad</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="divistorVelocidad" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>N° caidas distancia</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="numCaidasDistancia" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>N° caidas tiempo</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="numCaidasTiempo" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Perimetro mm</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="perimetro" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Pesos unidad</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="pesosUnidad" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Tiempo caida</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="tiempoCaida" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <label>Unidad</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="number" id="unidad" modifier="underbar"
+                                onkeydown="guradarIp()"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                </div>
+            </ons-card>
+
+        </ons-page>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="js/Jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/configuracionTaximetro.js"></script>
+<script type="text/javascript" src="js/modbus.js"></script>
+
+<script type="text/javascript" src="cordova.js"></script>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.example.mercolab"
+    },
+    "cordova.plugin.mds": {
+      "PACKAGE_NAME": "com.example.mercolab"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.example.mercolab"
+    }
+  },
+  "dependent_plugins": {}
+}
