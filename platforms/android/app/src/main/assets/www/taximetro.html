@@ -16,7 +16,7 @@
         </ons-toolbar>
 
         <ons-tabbar swipeable position="auto">
-            <ons-tab page="tab1.html" label="Prueba" icon="fa-car" active>
+            <ons-tab page="tab1.html" label="Prueba" onclick="validaConect()" icon="fa-car" active>
             </ons-tab>
             <ons-tab page="tab2.html" label="Configuracion" icon="md-settings">
             </ons-tab>
@@ -25,8 +25,10 @@
 
     <template id="tab1.html">
         <ons-page id="Tab1">
-
+            
             <ons-card>
+                <div id="conec" style="color: blue; margin-left: 15px; text-align: center; font-size: 18px"></div>
+                <br>
                 <div class="title">
                     Distancia
                 </div>
@@ -40,37 +42,94 @@
                             <strong>REVOLUCIONES</strong>
                         </ons-col>
                     </ons-row>
-                     <ons-row>
-                        
-                        <ons-col width="45%" style="text-align: left">
-                            <label style="
+                    <ons-row>
+
+                        <ons-col width="38%" style="text-align: left">
+                            <div style="width: 150px;
                                        font-size: 40px;
                                        border: solid 3px black;
                                        color: whitesmoke;text-align: center;
                                        background: black;
-                                       font-family: sans-serif;" id="pulsos">---</label>
+                                       font-family: sans-serif;" id="pulsos">---</div>
                         </ons-col>
-                        
-                        <ons-col width="45%" style="text-align: left">
-                            <label style="
+
+                        <ons-col width="38%" style="text-align: left">
+                            <div style="width: 150px;
                                        font-size: 40px;
+                                       margin-left: 45px;
                                        border: solid 3px black;
                                        color: whitesmoke;text-align: center;
                                        background: black;
-                                       font-family: sans-serif;" id="revoluciones">---</label>
+                                       font-family: sans-serif;" id="revoluciones">---</div>
                         </ons-col>
-                    </ons-row> 
+                    </ons-row>
+                    <ons-row>
+                        <ons-col width="50%" style="text-align: center">
+                            <strong>DISTANCIA (m)</strong>
+                        </ons-col>
+                        <ons-col width="50%" style="text-align: center">
+                            <strong>VELOCIDAD (Km/h)</strong>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col width="38%" style="text-align: left">
+                            <div style="width: 150px;
+                                   font-size: 40px;
+                                   border: solid 3px black;
+                                   color: whitesmoke;text-align: center;
+                                   background: black;;
+                                   font-family: sans-serif;" id="distancia">---</div>
+                        </ons-col>
+                        <ons-col width="38%" style="text-align: left">
+                            <div style="width: 150px;
+                                    margin-left: 45px;
+                                   font-size: 40px;
+                                   border: solid 3px black;
+                                   color: whitesmoke;text-align: center;
+                                   background: black;;
+                                   font-family: sans-serif;" id="velocidad">---</div>
+                        </ons-col>
+                        
+                        
+                    </ons-row>
                 </div>
             </ons-card>
-            <!-- <ons-card>
+            <ons-card>
                 <div class="title">
                     Tiempo
                 </div>
                 <div class="content">
                     <br>
+                    <ons-row>
+                        <ons-col width="30%" style="text-align: center">
 
+                        </ons-col>
+                        <ons-col width="33%" style="text-align: left">
+                            <div style="width: 150px;
+                                   font-size: 40px;
+                                   border: solid 3px black;
+                                   color: whitesmoke;text-align: center;
+                                   background: black;
+                                   font-family: sans-serif;" id="tiempo">---</div>
+                        </ons-col>
+
+                    </ons-row>
+                    <br><br>
+                    <ons-row>
+                        <ons-col width="33%" style="text-align: center">
+                            <!-- <ons-button style="background-color: antiquewhite; height: 50px;"  onclick="tIniciar();"><ons-icon icon="fa-play" size="38px"  style="color: black;"></ons-icon></ons-button> -->
+                            <button onclick="tIniciar()"><ons-icon icon="fa-play" size="50px"  style="color: #CD6155;" ></ons-icon></button>
+                        </ons-col>
+                        <ons-col width="33%" style="text-align: center">
+                            <!-- <ons-button style="background-color: antiquewhite;" class="btnt3" onclick="tPausar();"><ons-icon icon="fa-pause" size="38px" ></ons-icon></ons-button> -->
+                            <button onclick="tPausar()"><ons-icon icon="fa-pause" size="50px" style="color: #CD6155;" ></ons-icon></button>
+                        </ons-col>
+                        <ons-col width="33%" style="text-align: center">
+                            <button onclick="tReset()"><ons-icon icon="fa-stop" size="50px" style="color: #CD6155;" ></ons-icon></button>
+                        </ons-col>
+                    </ons-row>
                 </div>
-            </ons-card> -->
+            </ons-card>
         </ons-page>
     </template>
 
@@ -86,7 +145,7 @@
                     <ons-row>
                         <ons-col style="font-weight: bold;background: white">
                             <ons-list-header>Ingrese la ip del tablero</ons-list-header>
-                            <ons-input id="ip" modifier="underbar" onkeydown="guradarIp()"
+                            <ons-input id="ip" modifier="underbar" onkeyup="guradarIp()"
                                 style="width: 80%; height: 40px; margin-left: 18px; margin-right: 14px;"
                                 placeholder="Ip equipo"></ons-input>
                         </ons-col>
