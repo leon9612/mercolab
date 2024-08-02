@@ -16,16 +16,18 @@
         </ons-toolbar>
 
         <ons-tabbar swipeable position="auto">
-            <ons-tab page="tab1.html" label="Prueba" onclick="validaConect()" icon="fa-car" active>
+            <ons-tab page="tab1.html" label="Distancia" onclick="validaConect()" icon="fa-car" active>
             </ons-tab>
-            <ons-tab page="tab2.html" label="Configuracion" icon="md-settings">
+            <ons-tab page="tab2.html" label="Tiempo" icon="fa-times">
+            </ons-tab>
+            <ons-tab page="tab3.html" label="Configuracion" icon="md-settings">
             </ons-tab>
         </ons-tabbar>
     </ons-page>
 
     <template id="tab1.html">
         <ons-page id="Tab1">
-            
+
             <ons-card>
                 <div id="conec" style="color: blue; margin-left: 15px; text-align: center; font-size: 18px"></div>
                 <br>
@@ -34,7 +36,7 @@
                 </div>
                 <div class="content">
                     <br>
-                    <ons-row>
+                    <!-- <ons-row>
                         <ons-col width="50%" style="text-align: center">
                             <strong>PULSOS</strong>
                         </ons-col>
@@ -62,7 +64,7 @@
                                        background: black;
                                        font-family: sans-serif;" id="revoluciones">---</div>
                         </ons-col>
-                    </ons-row>
+                    </ons-row> -->
                     <ons-row>
                         <ons-col width="50%" style="text-align: center">
                             <strong>DISTANCIA (m)</strong>
@@ -89,11 +91,31 @@
                                    background: black;;
                                    font-family: sans-serif;" id="velocidad">---</div>
                         </ons-col>
-                        
-                        
+
+
+                    </ons-row>
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 100%; background-color: rgb(184, 223, 153); color: black;"
+                                onclick="iniciar()">Iniciar</ons-button>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 100%; background-color: #E6B0AA; color: black;">Reset</ons-button>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 100%; background-color: #A3E4D7; color: black;">Dato</ons-button>
+                        </ons-col>
                     </ons-row>
                 </div>
             </ons-card>
+
+        </ons-page>
+    </template>
+    <template id="tab2.html">
+        <ons-page id="Tab2">
+
+
             <ons-card>
                 <div class="title">
                     Tiempo
@@ -118,23 +140,32 @@
                     <ons-row>
                         <ons-col width="33%" style="text-align: center">
                             <!-- <ons-button style="background-color: antiquewhite; height: 50px;"  onclick="tIniciar();"><ons-icon icon="fa-play" size="38px"  style="color: black;"></ons-icon></ons-button> -->
-                            <button onclick="tIniciar()"><ons-icon icon="fa-play" size="50px"  style="color: #CD6155;" ></ons-icon></button>
+                            <button onclick="tIniciar()"><ons-icon icon="fa-play" size="50px"
+                                    style="color: #CD6155;"></ons-icon></button>
                         </ons-col>
                         <ons-col width="33%" style="text-align: center">
                             <!-- <ons-button style="background-color: antiquewhite;" class="btnt3" onclick="tPausar();"><ons-icon icon="fa-pause" size="38px" ></ons-icon></ons-button> -->
-                            <button onclick="tPausar()"><ons-icon icon="fa-pause" size="50px" style="color: #CD6155;" ></ons-icon></button>
+                            <button onclick="tPausar()"><ons-icon icon="fa-pause" size="50px"
+                                    style="color: #CD6155;"></ons-icon></button>
                         </ons-col>
                         <ons-col width="33%" style="text-align: center">
-                            <button onclick="tReset()"><ons-icon icon="fa-stop" size="50px" style="color: #CD6155;" ></ons-icon></button>
+                            <button onclick="tReset()"><ons-icon icon="fa-stop" size="50px"
+                                    style="color: #CD6155;"></ons-icon></button>
+                        </ons-col>
+                    </ons-row>
+                    <br>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 100%; background-color: aquamarine; color: black;">Tomar
+                                dato</ons-button>
                         </ons-col>
                     </ons-row>
                 </div>
             </ons-card>
         </ons-page>
     </template>
-
-    <template id="tab2.html">
-        <ons-page id="Tab2">
+    <template id="tab3.html">
+        <ons-page id="Tab3">
 
             <ons-card>
                 <div class="title">
@@ -157,6 +188,7 @@
                                 <div class="center">
                                     <select id="selectConfigTaximetro" onchange="selectCiudad()"
                                         style="width: 100%; height: 40px;">
+                                        <option selected>Seleccione la ciudad</option>"
                                     </select>
                                 </div>
                             </ons-list-item>
@@ -176,11 +208,20 @@
                     <br>
                     <ons-row>
                         <ons-col style="font-weight: bold;background: white">
+                            <label>Ciudad</label>
+                        </ons-col>
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-input type="text" id="ciudad" modifier="underbar" style="text-align: center;"
+                                disabled></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <ons-row>
+                        <ons-col style="font-weight: bold;background: white">
                             <label>Banderazo en pesos</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="banderazoPesos" modifier="underbar" style="text-align: center;"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="banderazoPesos" modifier="underbar"
+                                style="text-align: center;"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -188,8 +229,7 @@
                             <label>Banderazo en unidad</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="banderazoUnidad" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="banderazoUnidad" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -197,8 +237,7 @@
                             <label>Distancia en caida</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="distanciaCaida" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="distanciaCaida" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -206,8 +245,7 @@
                             <label>Divisor distancia</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="divistorDistancia" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="divistorDistancia" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -215,8 +253,7 @@
                             <label>Divisor velocidad</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="divistorVelocidad" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="divistorVelocidad" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -224,8 +261,7 @@
                             <label>N° caidas distancia</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="numCaidasDistancia" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="numCaidasDistancia" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -233,8 +269,7 @@
                             <label>N° caidas tiempo</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="numCaidasTiempo" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="numCaidasTiempo" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -242,8 +277,7 @@
                             <label>Perimetro mm</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="perimetro" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="perimetro" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -251,8 +285,7 @@
                             <label>Pesos unidad</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="pesosUnidad" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="pesosUnidad" modifier="underbar"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -260,8 +293,8 @@
                             <label>Tiempo caida</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="tiempoCaida" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="tiempoCaida" modifier="underbar"></ons-input>
+                            <ons-input type="hidden" id="idconfiguracion"></ons-input>
                         </ons-col>
                     </ons-row>
                     <ons-row>
@@ -269,8 +302,18 @@
                             <label>Unidad</label>
                         </ons-col>
                         <ons-col style="font-weight: bold;background: white">
-                            <ons-input type="number" id="unidad" modifier="underbar"
-                                onkeydown="guradarIp()"></ons-input>
+                            <ons-input type="number" id="unidad" modifier="underbar"></ons-input>
+                        </ons-col>
+                    </ons-row>
+                    <br>
+                    <ons-row>
+                        <!-- <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 95%; background-color: #FADBD8; color: black;"
+                                onclick="nuevo()">Nuevo</ons-button>
+                        </ons-col> -->
+                        <ons-col style="font-weight: bold;background: white">
+                            <ons-button style="width: 94%; background-color: aquamarine; color: black;"
+                                onclick="updateParametro()">Actualizar</ons-button>
                         </ons-col>
                     </ons-row>
                 </div>

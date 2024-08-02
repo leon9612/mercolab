@@ -28,7 +28,8 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
-        localStorage.setItem('url', 'http://192.168.1.38:8090/serverMercolab/index.php/');
+        //localStorage.setItem('url', 'http://192.168.1.38:8090/serverMercolab/index.php/');
+        localStorage.setItem('url', 'http://marcalab.com.co/serverMarcalab/index.php/');
         this.receivedEvent('deviceready');
         url = localStorage.getItem('url');
         if (localStorage.getItem('uuid') == null || localStorage.getItem('uuid') == "" || localStorage.getItem('uuid') == undefined) {
@@ -78,6 +79,14 @@ var saveDispositivo = function () {
         .then(respuesta => respuesta.json())
         .then((rta) => {
             console.log(rta);
+            Swal.fire({
+                position: 'center',
+                icon: 'info',
+                html: 'Se detectó un dispositivo nuevo y se registró; por favor, comunique con el administrador del sistema para que se active.',
+                showConfirmButton: true,
+                confirmButtonColor: '#3085d6',
+                // timer: 1500
+            })
             localStorage.setItem('uuid', device.uuid);
         })
         .catch(error => {
@@ -162,7 +171,7 @@ $("#btn-login").click(function (ev) {
                 errorMesaje(messaje, 'error')
             } else {
                 if (rta[0].estado == 0) {
-                    var messaje = 'El usuario no esta activo comuniquese con el adminitrador del sistema.';
+                    var messaje = 'El usuario no esta activo comuniquese con el administrador del sistema.';
                     errorMesaje(messaje, 'info')
                 } else {
                     localStorage.setItem("rol", rta[0].idrol)

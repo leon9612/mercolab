@@ -1,4 +1,4 @@
-#Wed Jul 24 21:06:59 COT 2024
+#Thu Aug 01 15:46:24 COT 2024
 base.0=D\:\\marcolab\\app\\mercolab\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

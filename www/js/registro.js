@@ -44,7 +44,7 @@ $("#btn-registro").click(function (ev) {
         numero_identificacion: $('#numeroDocumento').val(),
         email: $('#email').val(),
         password: $('#password').val(),
-        estado: 1,
+        estado: 0,
         function: 'guardarData'
     }
 
